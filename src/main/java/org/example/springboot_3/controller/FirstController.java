@@ -12,4 +12,10 @@ public class FirstController {
         model.addAttribute("username", "하주원");  // model 객체가 "하주원"값을 "username"에 연결해 웹 브라우저로 보냄.
         return "greetings";     // greetings.mustache 파일 반환
     }
+
+    @GetMapping("/bye")
+    public String seeYouNext(Model model) {
+        model.addAttribute("nickname", "하쮸");
+        return "goodbye";
+    }
 }
