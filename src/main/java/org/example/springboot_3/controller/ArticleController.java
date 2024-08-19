@@ -35,7 +35,7 @@ public class ArticleController {
         // 2. 리파지토리로 Entity를 DB에 저장.
         Article saved = articleRepository.save(article);
         log.info(saved.toString());
-        return "";
+        return "redirect:/articles/" + saved.getId();
     }
 
     @GetMapping("/articles/{id}")   // 중괄호 안에 id를 써주면 id는 변수로 사용

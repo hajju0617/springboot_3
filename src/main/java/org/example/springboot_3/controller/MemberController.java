@@ -33,7 +33,7 @@ public class MemberController {
 
         Member saved = memberRepositoryepository.save(member);
         log.info(saved.toString());
-        return "";
+        return "redirect:/members/" + saved.getId();
     }
 
     @GetMapping("/members/{id}")

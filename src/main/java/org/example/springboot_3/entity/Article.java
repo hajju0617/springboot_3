@@ -2,6 +2,7 @@ package org.example.springboot_3.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -17,6 +18,7 @@ Hibernate는 리플렉션(Reflection)을 사용하여 엔티티 객체를 생성
 만약 기본 생성자가 없으면, Hibernate는 객체를 생성할 수 없어서 InstantiationException 같은 예외가 발생.
  */
 @Entity // 해당 클래스가 Entity임을 선언. (@Entity는 JPA에서 제공하는 에노테이션)
+@Getter
 public class Article {
 
     @Id
@@ -28,6 +30,8 @@ public class Article {
 
     @Column
     private String content;
+
+
 
 //    public Article(Long id, String title, String content) {
 //        this.Id = id;
