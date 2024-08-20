@@ -7,8 +7,9 @@ import org.example.springboot_3.entity.Article;
 @AllArgsConstructor
 @ToString
 public class ArticleForm {
-    private final String title;
-    private final String content;
+    private Long id;
+    private String title;
+    private String content;
 
 
 //    public ArticleForm(String title, String content) {
@@ -25,6 +26,6 @@ public class ArticleForm {
 //    }
 
     public Article toEntity() {
-        return new Article(null, title, content);
+        return new Article(id, title, content);
     }
 }

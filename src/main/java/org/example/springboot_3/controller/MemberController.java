@@ -19,7 +19,7 @@ public class MemberController {
     @Autowired
     private MemberRepository memberRepositoryepository;
 
-    @GetMapping("/signup")
+    @GetMapping("/members/new")
     public String newMemberForm() {
         return "members/new";
     }
