@@ -80,8 +80,8 @@ public class ArticleController {
         if (target != null) {
             articleRepository.save(articleEntity);
         }
-        // 3. 수정 결과 페이지로 redirect
 
-        return "";
+        // 3. 수정 결과 페이지로 redirect
+        return "redirect:/articles/" + articleEntity.getId();
     }
 }

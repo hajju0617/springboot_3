@@ -7,6 +7,7 @@ import org.example.springboot_3.entity.Member;
 @ToString
 @AllArgsConstructor
 public class MemberForm {
+    private final Long id;
     private final String email;
     private final String password;
 
@@ -24,6 +25,6 @@ public class MemberForm {
 //    }
 
     public Member toEntity() {
-        return new Member(null, email, password);
+        return new Member(id, email, password);
     }
 }
