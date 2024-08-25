@@ -22,7 +22,7 @@ Hibernate는 리플렉션(Reflection)을 사용하여 엔티티 객체를 생성
 public class Article {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
