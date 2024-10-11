@@ -1,5 +1,6 @@
 package org.example.springboot_3.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,14 @@ import org.example.springboot_3.entity.Comment;
 @Getter                     // 각 필드 값을 조회할 수 있는 getter 메서드 자동 생성
 public class CommentDto {
     private Long id;
+
+    @JsonProperty("article_id")
     private Long articleId;
+
     private String nickname;
     private String body;
 
-    public static CommentDto crateCommentDto(Comment comment) {
+    public static CommentDto createCommentDto(Comment comment) {
         return new CommentDto(
                   comment.getId()               // 댓글 엔티티의 id
                 , comment.getArticle().getId()  // 댓글 엔티티가 속한 게시글의 id

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.example.springboot_3.dto.CommentDto;
 
 @Entity             // 해당 클래스가 엔티티임을 선언, 클래스 필드를 바탕으로 DB에 테이블 생성.
 @Getter             // 각 필드 값을 조회할 수 있는 getter 메서드 자동 생성
@@ -25,4 +26,35 @@ public class Comment {
 
     @Column
     private String body;
+
+    public static Comment createComment(CommentDto dto, Article article) {
+        if (dto.getId() != null) {
+            throw new IllegalArgumentException("댓글 생성 실패~! 댓글의 ID가 없어야 됨.");
+        }
+        if (dto.getArticleId() != article.getId()) {
+            throw new IllegalArgumentException("댓글 생성 실패~! 게시글의 ID가 잘못 됐음.");
+        }
+
+        return new Comment(
+                dto.getId()
+                  , article
+                  , dto.getNickname()
+                  , dto.getBody()
+        );
+    }
+
+    public void patch(CommentDto dto) {
+        // 예외 발생
+        if (this.id != dto.getId()) {
+            throw new IllegalArgumentException("댓글 수정 실패~! 잘못된 ID가 입력됐음");
+        }
+
+        // 객체 갱신
+        if (dto.getNickname() != null) {
+            this.nickname = dto.getNickname();
+        }
+        if (dto.getBody() != null) {
+            this.body = dto.getBody();
+        }
+    }
 }
