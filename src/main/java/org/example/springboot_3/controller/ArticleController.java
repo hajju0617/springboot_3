@@ -2,8 +2,10 @@ package org.example.springboot_3.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.springboot_3.dto.ArticleForm;
+import org.example.springboot_3.dto.CommentDto;
 import org.example.springboot_3.entity.Article;
 import org.example.springboot_3.repository.ArticleRepository;
+import org.example.springboot_3.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     private ArticleRepository articleRepository;
+    @Autowired
+    private CommentService commentService;      // 서비스 객체 주입
 
     @GetMapping("/articles/new")
     public String newArticleForm() {
@@ -45,8 +49,12 @@ public class ArticleController {
 
         // 1. id 조회 -> 데이터 가져오기
         Article articleEntity = articleRepository.findById(id).orElse(null);
+
+        List<CommentDto> commentDtos = commentService.comments(id);     // 댓글 목록 가져오기.
         // 2. 모델에 데이터 등록
         model.addAttribute("article", articleEntity);
+
+        model.addAttribute("commentDtos", commentDtos);     // 댓글 목록을 모델에 등록.
         // 3. 뷰 페이지 반환
         return "articles/show";
     }
