@@ -14,7 +14,6 @@ import org.example.springboot_3.entity.Comment;
 public class CommentDto {
     private Long id;
 
-    @JsonProperty("article_id")
     private Long articleId;
 
     private String nickname;

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.example.springboot_3.dto.CommentDto;
 
 @Entity             // 해당 클래스가 엔티티임을 선언, 클래스 필드를 바탕으로 DB에 테이블 생성.
@@ -12,6 +13,7 @@ import org.example.springboot_3.dto.CommentDto;
 @ToString           // 모든 필드를 출력할 수 있는 toString 메서드 자동 생성
 @AllArgsConstructor // 모든 필드를 매개변수로 갖는 생성자 자동 생성
 @NoArgsConstructor  // 매개변수가 아예 없는 기본 생성자 자동 생성
+@Slf4j
 public class Comment {
     @Id // PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +33,8 @@ public class Comment {
         if (dto.getId() != null) {
             throw new IllegalArgumentException("댓글 생성 실패~! 댓글의 ID가 없어야 됨.");
         }
+        log.info("dto : " + dto.getArticleId());
+        log.info("article : " + article.getId());
         if (dto.getArticleId() != article.getId()) {
             throw new IllegalArgumentException("댓글 생성 실패~! 게시글의 ID가 잘못 됐음.");
         }

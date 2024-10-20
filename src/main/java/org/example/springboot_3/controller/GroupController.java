@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class GroupController {
-    @Autowired
-    private GroupService groupService;
-    @Autowired
-    private TeamService teamService;
-
-    @GetMapping("/groups/{groupId}")
-    public String show(@PathVariable Long groupId, Model model) {
-        GroupDto groupDto = groupService.getGroup(groupId);
-        List<TeamDto> teamDtos = teamService.getTeamOnGroup(groupId);
-        model.addAttribute("groupname", groupDto.getName());
-        model.addAttribute("teamDtoList", teamDtos);
-
-        return "groups/show";
-    }
+//    @Autowired
+//    private GroupService groupService;
+//    @Autowired
+//    private TeamService teamService;
+//
+//    @GetMapping("/groups/{groupId}")
+//    public String show(@PathVariable Long groupId, Model model) {
+//        GroupDto groupDto = groupService.getGroup(groupId);
+//        List<TeamDto> teamDtos = teamService.getTeamOnGroup(groupId);
+//        model.addAttribute("groupname", groupDto.getName());
+//        model.addAttribute("teamDtoList", teamDtos);
+//
+//        return "groups/show";
+//    }
 }
