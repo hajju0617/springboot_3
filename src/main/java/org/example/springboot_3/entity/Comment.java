@@ -19,7 +19,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne  // 다대일
+    @ManyToOne  // 다대일      // 여러개의 comment가 article에 연결
     @JoinColumn(name = "article_id")    // FK, Article 엔티티의 PK와 매핑.
     private Article article;
 
