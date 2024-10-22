@@ -73,7 +73,10 @@ public class ArticleService {
     @Transactional
     public List<Article> createArticles(List<ArticleForm> dtos) {
         // 1. dto 묶음을 엔티티 묶음으로 변환
-        List<Article> articleList = dtos.stream().map(dto -> dto.toEntity()).collect(Collectors.toList());
+        List<Article> articleList = dtos
+                .stream()
+                .map(dto -> dto.toEntity())
+                .collect(Collectors.toList());
 
         // 2. 엔티티 묶음을 DB에 저장
         articleList.stream().forEach(article -> articleRepository.save(article));

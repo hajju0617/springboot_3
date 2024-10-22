@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @AllArgsConstructor // 클래스 안쪽의 모든 필드를 매개변수로 받는 생성자를 자동으로 생성
 @ToString
@@ -30,6 +33,11 @@ public class Article {
 
     @Column
     private String content;
+
+
+
+
+
 
     public void patch(Article article) {
         if (article.title != null) {
